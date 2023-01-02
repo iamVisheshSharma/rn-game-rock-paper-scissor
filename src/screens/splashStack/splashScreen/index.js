@@ -34,11 +34,9 @@ export default function SplashScreen() {
           <View
             style={{
               borderRadius: 100 / 2,
-              borderWidth: 2,
-              height: 75,
-              width: 75,
+              height: 100,
+              width: 100,
               backgroundColor: 'red',
-              borderColor: 'red',
             }}
           />
         </Animated.View>
