@@ -2,5 +2,6 @@
     "cSpell.words": [
         "bhuvi",
         "Vishesh"
-    ]
+    ],
+    "java.compile.nullAnalysis.mode": "automatic"
 }

@@ -9,15 +9,11 @@ import {
   Text,
   View,
 } from 'react-native';
+import SplashScreen from './screens/splashStack/splashScreen';
 
 const App = () => {
   return (
-      <SafeAreaView>
-        <View>
-          <Text>Vishesh in the house lets rock the party.</Text>
-          <Text>This code is just for the testing.</Text>
-        </View>
-      </SafeAreaView>
+      <SplashScreen />
   );
 };
 
