@@ -19,12 +19,19 @@ export default class Bounce extends Component {
 
   handlePress = () => {
 
+    /**
+     * First animation is for make the object bouncy
+     * Second animation is used to stretch the object width according to device screen width.
+     * Second animation execute after 3sec delay.
+     */
     Animated.spring(this.state.animation, {
-      toValue: HEIGHT("40%"),
+      toValue: HEIGHT("38%"),
       friction: 0.5,
       tension: 1,
       useNativeDriver: false
-    }).start(() => {
+    }).start();
+
+    setTimeout(() => {
       Animated.timing(this.state.ballWidth, {
         duration: 1000,
         toValue: WIDTH("90%"),
@@ -38,62 +45,53 @@ export default class Bounce extends Component {
             useNativeDriver: false,
           }).start((finished) => {
             if (finished.finished) this.setState({ isLogoVisible: true });
+            Animated.parallel([
+              Animated.timing(this.state.logoFadeIn, {
+                duration: 4000,
+                toValue: 1,
+                useNativeDriver: false,
+              }),
             Animated.timing(this.state.ballFadeOut, {
               duration: 4000,
               toValue: 0,
               useNativeDriver: false,
-            }).start();
-            Animated.timing(this.state.logoFadeIn, {
-              duration: 2000,
-              toValue: 1,
-              useNativeDriver: false,
-            }).start();
+            }),
+            ]).start();
           });
         }, 1000);
       });
-    });
-    // Animated.sequence([
-    //   ,
-    // ]).start((finished) => {
-    //   if (finished.finished) this.setState({ isTextVisible: true });
-    //   Animated.timing(this.state.ballFadeOut, {
-    //     duration: 4000,
-    //     toValue: 0,
-    //     useNativeDriver: false,
-    //   }).start()
-    // });
+    }, 3000);
   }
 
 
   render() {
     return (
-      <>
-        <SafeAreaView>
-          <Animated.View style={{
-            width: this.state.ballWidth,
-            height: 100,
-            borderRadius: 50,
-            backgroundColor: "tomato",
-            alignSelf: "center",
-            alignItems: "center",
-            justifyContent: "center",
-            opacity: this.state.ballFadeOut,
-            transform: [{
-              translateY: this.state.animation,
-              // translateX: this.state.ballWidth
-              // scaleX: this.state.ballWidth
-            }]
-          }}>
-            {this.state.isTextVisible ? (
-              <Text>Hey Hi, How are you.</Text>
-            ) : null}
-          </Animated.View>
-          {/* {this.state.} */}
-          <Animated.View style={{opacity: this.state.logoFadeIn, height: 150, width: 300, borderWidth: 3, borderRadius: 10,alignSelf: "center",backgroundColor:"yellow",justifyContent:"center",alignItems:"center" }}>
-              <Text style={{fontSize:20,fontWeight:"bold"}}>RN-Game</Text>
-          </Animated.View>
+        <SafeAreaView style={{ flex: 1 }}>
+          <View style={{ flex: 1, borderWidth: 5, margin: 10,justifyContent:"center", alignItems:"center" }}>
+            <Animated.View style={{
+              width: this.state.ballWidth,
+              height: 100,
+              borderRadius: 50,
+              backgroundColor: "tomato",
+              alignSelf: "center",
+              alignItems: "center",
+              justifyContent: "center",
+              opacity: this.state.ballFadeOut,
+              position: "absolute",
+              top: 0,
+              transform: [{
+                translateY: this.state.animation,
+              }]
+            }}>
+              {this.state.isTextVisible ? (
+                <Text style={{fontSize: 16, fontWeight: "bold"}}>Welcome to meme world.</Text>
+              ) : null}
+            </Animated.View>
+            <Animated.View style={{ opacity: this.state.logoFadeIn, height: 150, width: 300, borderWidth: 3, borderRadius: 10, alignSelf: "center", backgroundColor: "yellow", justifyContent: "center", alignItems: "center" }}>
+              <Text style={{ fontSize: 20, fontWeight: "bold" }}>RN-Game</Text>
+            </Animated.View>
+          </View>
         </SafeAreaView>
-      </>
     );
   }
 }
