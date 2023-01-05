@@ -9,11 +9,13 @@ import {
   Text,
   View,
 } from 'react-native';
+import PlayerDetails from './screens/mainStack/PlayerDetails';
 import SplashScreen from './screens/splashStack/splashScreen';
 
 const App = () => {
   return (
-      <SplashScreen />
+      // <SplashScreen />
+      <PlayerDetails />
   );
 };
 
