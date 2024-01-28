@@ -1,21 +1,20 @@
-/**
- * This is gaming project and creates by Vishesh and Bhuvi 
- * We're creating this project just for fun 
- */
 
 import React from 'react';
-import {
-  SafeAreaView,
-  Text,
-  View,
-} from 'react-native';
-import PlayerDetails from './screens/mainStack/PlayerDetails';
-import SplashScreen from './screens/splashStack/splashScreen';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import HomePage from './HomePage';
+import GamePage from './GamePage';
+
+const Stack = createStackNavigator();
 
 const App = () => {
   return (
-      // <SplashScreen />
-      <PlayerDetails />
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name='HomePage' component={HomePage} />
+        <Stack.Screen name='GamePage' component={GamePage} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 

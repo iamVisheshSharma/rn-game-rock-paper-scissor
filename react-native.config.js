@@ -3,6 +3,6 @@ module.exports = {
 			ios: {},
 			android: {},
 	},
-	assets: ['./src/assets/fonts/Roboto']
+	assets: ['./src/assets/fonts/']
 	};
 	
