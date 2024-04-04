@@ -1,14 +1,14 @@
 import React from "react";
-import { Text, TouchableOpacity, StyleSheet } from "react-native";
+import { Text, Pressable, StyleSheet } from "react-native";
 import { Colors, Fonts, Sizes } from "../assets";
 
 export default function Button({ label, onPressHandle }) {
 	return (
-		<TouchableOpacity onPress={onPressHandle} style={styles.button}>
+		<Pressable onPress={onPressHandle} style={styles.button}>
 			<Text style={styles.buttonText}>
 				{label}
 			</Text>
-		</TouchableOpacity>
+		</Pressable>
 	)
 }
 
